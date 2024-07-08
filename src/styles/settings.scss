@@ -1,0 +1,10 @@
+@use 'vuetify/settings' with (
+  $tooltip-border-radius: 4px,
+  $tooltip-padding: 5px 5px,
+
+  $stepper-elevation: 0,
+  $stepper-header-elevation: 3,
+
+  $border-radius-root: 8px,
+
+);
