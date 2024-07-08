@@ -1,3 +1,5 @@
+# How I ran this project
+
 The error message you're seeing usually indicates that there's an issue with how your scripts are being executed. It seems like the script might be getting run by a shell that isn't interpreting the command correctly. This might be related to how Node.js or npm is handling the command on your system.
 
 Here are a few steps you can take to troubleshoot and resolve this issue:

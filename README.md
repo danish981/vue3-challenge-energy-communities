@@ -46,6 +46,7 @@ Your task is to develop an application that includes (using Vuetify components):
 ## Submission
 
 Commit your changes to your cloned repository and create a pull request for final submission. Make sure your final submission includes:
+
 - Functional components using Vue 3 Composition API.
 - Usage of Vuetify for UI components.
 - Advanced state management using Pinia.
@@ -63,4 +64,3 @@ Ensure you adhere to best practices and clean code standards to ensure the whole
 - Effective use of Vuetify components and styling.
 - Proper state management with Pinia, including asynchronous operations.
 - Accuracy and presentation of d3.js charts.
-
