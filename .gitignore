@@ -1,6 +1,33 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
 .idea
-/node_modules
+.phpIntel
+.vscode
 
 
-# the private notes 
+
+
+# dependencies
+node_modules
+package-lock.json (if intentionally not including the lock file, though not recommended)
+# dist folder
+dist
+
+# production
+build
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+# private notes about the project
 notes
