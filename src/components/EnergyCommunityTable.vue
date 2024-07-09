@@ -5,43 +5,43 @@
 
   <div class="middle-centered">
     <v-table density="compact">
-      <thead>
-      <tr>
+      <thead class="border border-b">
+      <tr class="bg-grey-lighten-3">
         <th class="text-left">
-          id
+          ID
         </th>
-        <th class="text-left">
-          name
+        <th class="text-left font-weight-bold">
+          Name
         </th>
-        <th class="text-left">
-          usage
+        <th class="text-left font-weight-bold">
+          Usage
         </th>
-        <th class="text-left">
-          members
+        <th class="text-left font-weight-bold">
+          Members
         </th>
-        <th class="text-left">
-          location
+        <th class="text-left font-weight-bold">
+          Location
         </th>
-        <th class="text-left">
-          type
+        <th class="text-left font-weight-bold">
+          Type
         </th>
-        <th class="text-left">
-          date
+        <th class="text-left font-weight-bold">
+          Date
         </th>
       </tr>
       </thead>
       <tbody>
       <tr
           v-for="item in energyCommunities"
-          :key="item.name"
+          :key="item.id"
       >
-        <td>{{ item.id }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.energyUsage }}</td>
-        <td>{{ item.members }}</td>
-        <td>{{ item.location }}</td>
-        <td>{{ item.energyType }}</td>
-        <td>{{ item.startDate }}</td>
+        <td class="text-left font-weight-bold">{{ item.id }}</td>
+        <td class="text-left">{{ item.name }}</td>
+        <td class="text-left">{{ item.energyUsage }}</td>
+        <td class="text-left">{{ item.members }}</td>
+        <td class="text-left">{{ item.location }}</td>
+        <td class="text-left">{{ item.energyType }}</td>
+        <td class="text-left">{{ item.startDate }}</td>
       </tr>
       </tbody>
     </v-table>
@@ -53,13 +53,9 @@
 <script setup>
 // TODO: Use Pinia for state management and Vue Composition API for component logic
 
-
-import {ref} from "vue";
 import energyCommunities from "@/mocked-data/energyCommunities";
 
 // const energyCommunities = ref([])
-
-
 
 
 </script>
