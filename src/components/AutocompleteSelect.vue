@@ -5,7 +5,7 @@
     <v-autocomplete
         density="default"
         label="Energy Community Name"
-        :items="['Community 1', 'Community 2', 'Community 3', 'Community 4', 'Community 5']"
+        :items="names"
         chips
         bg-color="#E0E0E0"
         clearable
@@ -20,8 +20,7 @@
 // TODO: Utilize Vue Composition API for managing states and logic
 
 import {energyCommunityStore} from "@/stores/energyCommunityStore";
-
-console.log(energyCommunityStore().getCommunities())
+const names = (await energyCommunityStore().getCommunities()).map(community => community.name);
 
 
 </script>

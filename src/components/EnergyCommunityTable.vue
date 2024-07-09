@@ -4,11 +4,14 @@
 
 
   <div class="middle-centered">
-    <v-table density="compact">
+
+
+
+    <v-data-table density="compact">
       <thead class="border border-b">
       <tr class="bg-grey-lighten-3">
-        <th class="text-left">
-          ID
+        <th class="text-left font-weight-bold">
+          Id
         </th>
         <th class="text-left font-weight-bold">
           Name
@@ -44,7 +47,7 @@
         <td class="text-left">{{ item.startDate }}</td>
       </tr>
       </tbody>
-    </v-table>
+    </v-data-table>
   </div>
 
 
@@ -53,6 +56,7 @@
 <script setup>
 // TODO: Use Pinia for state management and Vue Composition API for component logic
 
+import {ref} from "vue";
 import energyCommunities from "@/mocked-data/energyCommunities";
 
 // const energyCommunities = ref([])

@@ -14,7 +14,7 @@ export const energyCommunityStore = defineStore('energyCommunityStore', {
         // TODO: Implement an action to fetch communities data using the EnergyCommunityService
         // This should update the state appropriately with the data, loading status, and any errors
 
-        getCommunities() {
+        async getCommunities() {
             return EnergyCommunityService.fetchCommunities();
         }
 
