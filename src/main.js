@@ -1,15 +1,18 @@
-import { createVuetify } from 'vuetify';
+import '../src/styles/style.css';
+
+
+import {createVuetify} from 'vuetify';
 import "vuetify/styles";
 import '@mdi/font/css/materialdesignicons.css'
-import { createApp } from 'vue';
-import { createPinia } from 'pinia';
+import {createApp} from 'vue';
+import {createPinia} from 'pinia';
 import router from './router';
 import App from './App.vue';
 
 
 const app = createApp(App);
 app.use(createPinia());
-const vuetify= createVuetify({
+const vuetify = createVuetify({
     defaults: {
         VBtn: {
             color: 'primary',
@@ -19,8 +22,7 @@ const vuetify= createVuetify({
         },
     },
 
-    display: {
-    },
+    display: {},
 });
 app.use(vuetify);
 app.use(router);
