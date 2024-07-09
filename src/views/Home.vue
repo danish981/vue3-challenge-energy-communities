@@ -8,6 +8,8 @@ import EnergyCommunityTable from "@/components/EnergyCommunityTable.vue";
   <div>
     <!-- Dev server is running: TODO go on implementing the frontend -->
 
+    <h2 class="text-center ma-3 border-b">Energy Communities table | CRUD</h2>
+
     <!-- todo : Place components here -->
     <autocomplete-select></autocomplete-select>
     <energy-community-table></energy-community-table>
