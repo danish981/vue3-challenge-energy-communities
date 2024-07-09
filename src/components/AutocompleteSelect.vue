@@ -4,7 +4,7 @@
   <div class="middle-centered">
     <v-autocomplete
         density="default"
-        label="Energy Community Name"
+        label="Select energy communities by name"
         :items="names"
         chips
         bg-color="#E0E0E0"
