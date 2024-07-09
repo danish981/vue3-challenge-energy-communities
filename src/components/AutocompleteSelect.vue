@@ -10,7 +10,7 @@
         bg-color="#E0E0E0"
         clearable
         multiple
-        variant="outlined"
+        variant="solo-filled"
     >
     </v-autocomplete>
   </div>
