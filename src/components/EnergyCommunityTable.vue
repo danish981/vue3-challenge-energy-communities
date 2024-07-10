@@ -1,47 +1,39 @@
 <template>
-
-  <!-- TODO: Implement data table with CRUD operations -->
-   
   <div class="middle-centered">
     <v-data-table
         density="compact"
-        :headers="[
-          { title: 'Id', value: 'id', align : 'start' },
-          { title: 'Name', value: 'name' , align : 'start' },
-          { title: 'Usage', value: 'energyUsage', align : 'start'  },
-          { title: 'Members', value: 'members' , align : 'start' },
-          { title: 'Location', value: 'location' , align : 'start' },
-          { title: 'Type', value: 'energyType', align : 'start'  },
-          { title: 'Date', value: 'startDate', align : 'start'  },
-      ]"
-
+        :headers="headers"
         class="elevation-1 text-left bg-amber-darken-2 bg-grey-lighten-5 border-md rounded"
-        :items="items"
+        :items="selectedCommunities"
         item-key="name"
         items-per-page="10"
-    >
-
-    </v-data-table>
-
+    />
   </div>
-
-
 </template>
 
 <script setup>
-// TODO: Use Pinia for state management and Vue Composition API for component logic
+import { ref, onMounted, computed } from "vue";
+import { useEnergyCommunityStore } from "@/stores/energyCommunityStore";
 
-// TODO: Use Pinia for state management and Vue Composition API for component logic
-// TODO: Use Pinia for state management and Vue Composition API for component logic
-import {energyCommunityStore} from "@/stores/energyCommunityStore";
+const store = useEnergyCommunityStore();
 
-const items = (await energyCommunityStore().getCommunities());
+const headers = [
+  {title: "Id", value: "id", align: "start"},
+  {title: "Name", value: "name", align: "start"},
+  {title: "Usage", value: "energyUsage", align: "start"},
+  {title: "Members", value: "members", align: "start"},
+  {title: "Location", value: "location", align: "start"},
+  {title: "Type", value: "energyType", align: "start"},
+  {title: "Date", value: "startDate", align: "start"},
+];
 
-// const energyCommunities = ref([])
+onMounted(async () => {
+  await store.getCommunities();
+});
 
+const selectedCommunities = computed(() => store.selectedCommunities);
 
 </script>
-
 
 <style scoped>
 .middle-centered {
@@ -50,6 +42,4 @@ const items = (await energyCommunityStore().getCommunities());
   width: 70%;
   padding: 10px;
 }
-
-
 </style>

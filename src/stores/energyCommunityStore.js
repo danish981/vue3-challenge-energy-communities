@@ -1,40 +1,44 @@
 import {defineStore} from 'pinia';
 import EnergyCommunityService from '../services/EnergyCommunityService';
 
-export const energyCommunityStore = defineStore('energyCommunityStore', {
+export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
     state: () => ({
-        // TODO: Define the state for storing energy communities data
-        // Hint: You might need an array for communities and possibly other state variables for loading or error management
-        communities: EnergyCommunityService.fetchCommunities(),
-        selectedCommunities: [],
+        communities: [],
+        selectedCommunityNames: [],
         loading: false,
         error: null
     }),
 
     getters: {
-        getSelectedCommunities: {
-            get: (state) => state.selectedCommunities
+
+        // selectedCommunities(state) {
+        //     return state.communities.filter(community => state.selectedCommunityNames.includes(community.name));
+        // }
+
+        selectedCommunities(state) {
+            if (state.selectedCommunityNames.length === 0) {
+                return state.communities;
+            }
+            return state.communities.filter(community =>
+                state.selectedCommunityNames.includes(community.name)
+            );
         }
+
     },
 
     actions: {
-        // TODO: Implement an action to fetch communities data using the EnergyCommunityService
-        // This should update the state appropriately with the data, loading status, and any errors
-
         async getCommunities() {
             this.loading = true;
             this.error = null;
             try {
-                return this.communities = await EnergyCommunityService.fetchCommunities();
+                this.communities = await EnergyCommunityService.fetchCommunities();
             } catch (error) {
-                return this.error = error.message;
+                this.error = error.message;
             } finally {
                 this.loading = false;
             }
         },
 
-        // TODO: Implement create, update, and delete actions for communities
-        // Each action should interact with the EnergyCommunityService and update the state accordingly
-
+        // Create, update, delete actions would go here
     }
 });

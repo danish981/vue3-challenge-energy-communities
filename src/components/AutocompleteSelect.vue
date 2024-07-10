@@ -1,6 +1,4 @@
 <template>
-  <!-- todo: Implement autocomplete and multiselect form field using Vuetify -->
-
   <div class="middle-centered">
     <v-autocomplete
         density="default"
@@ -14,31 +12,26 @@
         clearable
         multiple
         variant="solo-filled"
-    >
-    </v-autocomplete>
+    />
   </div>
 </template>
 
 <script setup>
-// TODO: Utilize Vue Composition API for managing states and logic
+import { useEnergyCommunityStore } from "@/stores/energyCommunityStore";
+import { ref, watch, onMounted } from "vue";
 
-import {energyCommunityStore} from "@/stores/energyCommunityStore";
-import {ref, watch} from "vue";
-
-const store = energyCommunityStore();
+const store = useEnergyCommunityStore();
 const names = ref([]);
 const selectedNames = ref([]);
 
-store.getCommunities().then(communities => {
-  names.value = communities.map(community => community.name);
+onMounted(async () => {
+  await store.getCommunities();
+  names.value = store.communities.map(community => community.name);
 });
 
 watch(selectedNames, (newSelectedNames) => {
-  console.log(newSelectedNames)
-  store.selectedCommunities = newSelectedNames;
+  store.selectedCommunityNames = newSelectedNames;
 });
-
-
 </script>
 
 <style scoped>
@@ -48,6 +41,4 @@ watch(selectedNames, (newSelectedNames) => {
   width: 70%;
   padding: 10px;
 }
-
-
 </style>
