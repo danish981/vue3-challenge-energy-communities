@@ -32,6 +32,7 @@ onMounted(async () => {
 watch(selectedNames, (newSelectedNames) => {
   store.selectedCommunityNames = newSelectedNames;
 });
+
 </script>
 
 <style scoped>

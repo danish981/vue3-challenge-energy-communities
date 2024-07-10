@@ -12,8 +12,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from "vue";
-import { useEnergyCommunityStore } from "@/stores/energyCommunityStore";
+
+import {ref, onMounted, computed} from "vue";
+import {useEnergyCommunityStore} from "@/stores/energyCommunityStore";
 
 const store = useEnergyCommunityStore();
 
@@ -32,7 +33,6 @@ onMounted(async () => {
 });
 
 const selectedCommunities = computed(() => store.selectedCommunities);
-
 </script>
 
 <style scoped>
