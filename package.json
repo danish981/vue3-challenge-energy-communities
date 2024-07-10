@@ -7,11 +7,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mdi/font": "^7.0.96",
+    "d3": "^7.9.0",
+    "pinia": "^2.1.7",
     "vue": "^3.4.24",
     "vue-router": "^4.3.2",
-    "vuetify": "^3.5.16",
-    "pinia": "^2.1.7",
-    "@mdi/font": "^7.0.96"
+    "vuetify": "^3.5.16"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.6.2",
