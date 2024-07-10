@@ -6,7 +6,6 @@
     <autocomplete-select></autocomplete-select>
     <crud-operators></crud-operators>
     <energy-community-table></energy-community-table>
-
   </div>
 </template>
 

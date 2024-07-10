@@ -1,5 +1,7 @@
 <template>
-  <div class="middle-centered">
+
+
+  <Centered>
     <v-autocomplete
         density="default"
         v-model="selectedNames"
@@ -13,12 +15,15 @@
         multiple
         variant="solo-filled"
     />
-  </div>
+  </Centered>
+
+
 </template>
 
 <script setup>
-import { useEnergyCommunityStore } from "@/stores/energyCommunityStore";
-import { ref, watch, onMounted } from "vue";
+import {useEnergyCommunityStore} from "@/stores/energyCommunityStore";
+import {onMounted, ref, watch} from "vue";
+import Centered from "@/components/Centered.vue";
 
 const store = useEnergyCommunityStore();
 const names = ref([]);
@@ -36,10 +41,5 @@ watch(selectedNames, (newSelectedNames) => {
 </script>
 
 <style scoped>
-.middle-centered {
-  margin: 0 auto;
-  text-align: center;
-  width: 70%;
-  padding: 10px;
-}
+
 </style>
