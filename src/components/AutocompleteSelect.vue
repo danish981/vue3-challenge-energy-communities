@@ -18,6 +18,9 @@
   </Centered>
 
 
+  <button @click="store.addOrEditCommunityForm = true; store.isAdding = true" title="click to add a new community"></button>
+
+
 </template>
 
 <script setup>

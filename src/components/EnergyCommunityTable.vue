@@ -13,7 +13,7 @@
 
 <script setup>
 
-import {ref, onMounted, computed} from "vue";
+import {computed, onMounted} from "vue";
 import {useEnergyCommunityStore} from "@/stores/energyCommunityStore";
 
 const store = useEnergyCommunityStore();

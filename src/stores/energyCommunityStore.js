@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia';
+import {defineStore} from 'pinia';
 import EnergyCommunityService from '../services/EnergyCommunityService';
 
 export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
@@ -7,7 +7,9 @@ export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
         communities: [],
         selectedCommunityNames: [],
         loading: false,
-        error: null
+        error: null,
+        addOrEditCommunityForm: false,
+        isAdding: false
     }),
 
     getters: {
