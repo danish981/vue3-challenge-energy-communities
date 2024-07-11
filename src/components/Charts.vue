@@ -6,6 +6,7 @@
       <v-row justify="center">
         <v-col cols="8">
 
+          <!-- the demo text just to fill the page with the content -->
           <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium aspernatur autem corporis
             dignissimos, doloribus ducimus eius est eum exercitationem id, incidunt iure iusto odio odit perferendis
@@ -28,8 +29,6 @@
 
 <script setup>
 // TODO: Create reactive d3.js charts with Vue Composition API
-
-
 
 
 </script>

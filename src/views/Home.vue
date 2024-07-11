@@ -1,11 +1,10 @@
 <template>
   <div>
-    <!-- Dev server is running: TODO go on implementing the frontend -->
 
-    <!-- todo : Place components here -->
     <autocomplete-select></autocomplete-select>
     <crud-operators></crud-operators>
     <energy-community-table></energy-community-table>
+
   </div>
 </template>
 
