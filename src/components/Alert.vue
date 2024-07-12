@@ -1,4 +1,4 @@
-<template>
+ <template>
   <v-alert
       color="warning"
       icon="mdi-alert-circle-outline"

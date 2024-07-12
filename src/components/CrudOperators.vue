@@ -1,3 +1,7 @@
+
+<!-- todo : remvoe this file and we no longer need this componnent -->
+<!-- todo : we are adding add button, edit and delete button next to each record -->
+
 <template>
   <div class="middle-centered">
     <v-btn color="primary" @click="addCommunity">Add Community</v-btn>
@@ -7,7 +11,7 @@
 </template>
 
 <script setup>
-import {useEnergyCommunityStore} from "@/stores/energyCommunityStore";
+import { useEnergyCommunityStore } from "@/stores/energyCommunityStore";
 
 const store = useEnergyCommunityStore();
 
@@ -18,7 +22,7 @@ const addCommunity = () => {
     members: 100,
     location: "New Location",
     energyType: "Solar",
-    startDate: "2024-07-09"
+    startDate: "2024-07-09",
   };
   store.addCommunity(newCommunity);
 };
@@ -31,7 +35,7 @@ const updateCommunity = () => {
     members: 200,
     location: "Updated Location",
     energyType: "Wind",
-    startDate: "2024-07-09"
+    startDate: "2024-07-09",
   };
   store.updateCommunity(updatedCommunity);
 };
@@ -40,8 +44,6 @@ const deleteCommunity = () => {
   const id = 1; // Specify the ID of the community you want to delete
   store.deleteCommunity(id);
 };
-
-
 </script>
 
 <style scoped>
