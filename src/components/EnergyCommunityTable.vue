@@ -97,6 +97,9 @@
 <script setup>
 import {computed, onMounted, ref} from 'vue';
 import {useEnergyCommunityStore} from '@/stores/energyCommunityStore';
+import {useToast} from "vue-toastification";
+
+const toast = useToast();
 
 const store = useEnergyCommunityStore();
 
@@ -148,16 +151,25 @@ const openEditForm = (item) => {
 };
 
 const saveForm = async () => {
+
+  if (!form.value.name || !form.value.energyUsage || !form.value.members || !form.value.location || !form.value.energyType || !form.value.startDate) {
+    toast.error('Please fill in all required fields');
+    return;
+  }
+
   if (isEditMode.value) {
     await store.updateCommunity(form.value);
+    toast.success('Community updated successfully');
   } else {
     await store.addCommunity(form.value);
+    toast.success('Community added successfully');
   }
   addoreditCommunityForm.value = false;
 };
 
 const deleteCommunity = async (id) => {
   await store.deleteCommunity(id);
+  toast.success('Community deleted successfully');
 };
 
 const selectedCommunities = computed(() => store.selectedCommunities);
