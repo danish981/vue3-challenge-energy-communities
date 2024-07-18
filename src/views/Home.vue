@@ -1,9 +1,6 @@
 <template>
   <div>
     <autocomplete-select></autocomplete-select>
-
-    <v-alert></v-alert>
-
     <energy-community-table></energy-community-table>
   </div>
 </template>

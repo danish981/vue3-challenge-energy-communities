@@ -12,16 +12,38 @@
         <v-btn color="primary" @click="openAddForm">Add Community</v-btn>
       </template>
 
+
       <template v-slot:item.actions="{ item }">
-        <v-btn icon @click="openEditForm(item)">
-          <v-icon color="blue">mdi-pencil</v-icon>
+
+        <v-btn
+            @click="openEditForm(item)"
+            color="green"
+            text="edit"
+            class="text-uppercase"
+            size="small"
+            label
+        >
+          <v-icon color="white">mdi-pencil</v-icon>
         </v-btn>
-        <v-btn icon @click="deleteCommunity(item.id)">
-          <v-icon color="red">mdi-delete</v-icon>
+
+
+        <v-btn
+            @click="deleteCommunity(item.id)"
+            color="red"
+            text="delete"
+            class="text-uppercase"
+            size="small"
+            label
+        >
+          <v-icon color="white">mdi-bucket</v-icon>
         </v-btn>
+
+
       </template>
+
+
     </v-data-table>
-    
+
     <v-dialog v-model="addoreditCommunityForm" max-width="600">
       <template v-slot:activator="{ on }"></template>
 
