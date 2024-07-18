@@ -8,7 +8,6 @@
         item-key="name"
         items-per-page="10"
     >
-
       <template v-slot:top>
         <v-btn color="primary" @click="openAddForm">Add Community</v-btn>
       </template>
@@ -22,7 +21,7 @@
         </v-btn>
       </template>
     </v-data-table>
-
+    
     <v-dialog v-model="addoreditCommunityForm" max-width="600">
       <template v-slot:activator="{ on }"></template>
 
@@ -124,17 +123,17 @@ const openEditForm = (item) => {
   addoreditCommunityForm.value = true;
 };
 
-const saveForm = () => {
+const saveForm = async () => {
   if (isEditMode.value) {
-    store.updateCommunity(form.value);
+    await store.updateCommunity(form.value);
   } else {
-    store.addCommunity(form.value);
+    await store.addCommunity(form.value);
   }
   addoreditCommunityForm.value = false;
 };
 
-const deleteCommunity = (id) => {
-  store.deleteCommunity(id);
+const deleteCommunity = async (id) => {
+  await store.deleteCommunity(id);
 };
 
 const selectedCommunities = computed(() => store.selectedCommunities);

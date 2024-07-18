@@ -1,5 +1,6 @@
 <template>
-  <v-container class="bg-grey-lighten-5">
+
+  <v-container class="mt-8">
     <v-row justify="start">
 
       <v-row justify="center">
@@ -12,4 +13,5 @@
 
     </v-row>
   </v-container>
+
 </template>
