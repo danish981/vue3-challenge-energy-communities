@@ -16,10 +16,11 @@
       <template v-slot:item.actions="{ item }">
 
         <v-btn
+            variant="elevated"
             @click="openEditForm(item)"
             color="green"
             text="edit"
-            class="text-uppercase"
+            class="mr-1 rounded"
             size="small"
             label
         >
@@ -28,10 +29,11 @@
 
 
         <v-btn
+            variant="elevated"
             @click="deleteCommunity(item.id)"
             color="red"
             text="delete"
-            class="text-uppercase"
+            class="rounded"
             size="small"
             label
         >
