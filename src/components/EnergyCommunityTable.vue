@@ -78,17 +78,17 @@
           </v-row>
 
           <small class="text-caption text-medium-emphasis">*indicates required field</small>
+
         </v-card-text>
 
         <v-divider></v-divider>
 
         <v-card-actions>
           <v-spacer></v-spacer>
-
-          <v-btn text="Close" variant="plain" @click="addoreditCommunityForm = false"></v-btn>
-
-          <v-btn color="primary" text="Save" variant="tonal" @click="saveForm"></v-btn>
+          <v-btn color="secondary rounded" variant="elevated" text="Close" @click="addoreditCommunityForm = false"></v-btn>
+          <v-btn color="primary rounded" variant="elevated" text="Save" @click="saveForm"></v-btn>
         </v-card-actions>
+
       </v-card>
     </v-dialog>
   </div>
