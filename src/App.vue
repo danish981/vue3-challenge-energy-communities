@@ -31,7 +31,7 @@
           </router-link>
 
           <router-link to="/donut-chart">
-            <v-list-item prepend-icon="mdi-chart-bar"
+            <v-list-item prepend-icon="mdi-chart-donut"
                          class="nav-icon-dark-gray"
                          title="Donut chart"
                          value="Donut chart">
