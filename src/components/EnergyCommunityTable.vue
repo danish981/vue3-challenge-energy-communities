@@ -25,8 +25,9 @@
           :search="search"
           items-per-page="10"
       >
-        <template v-slot:top>
-          <v-btn color="primary" @click="openAddForm">Add Community</v-btn>
+
+        <template v-slot:top class="text-center">
+          <v-btn color="primary rounded w-25" variant="elevated" @click="openAddForm">Add Community</v-btn>
         </template>
 
 
