@@ -13,7 +13,7 @@ const routes = [
         name: 'Bar Chart',
         component: BarChart
     }, {
-        path: '/donout-chart',
+        path: '/donut-chart',
         name: 'Donut Chart',
         component: DonutChart
     }

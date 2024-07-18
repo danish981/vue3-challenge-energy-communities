@@ -3,13 +3,16 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import {onMounted, ref} from 'vue';
 import * as d3 from 'd3';
 
+import {useEnergyCommunityStore} from '@/stores/energyCommunityStore';
+
+const store = useEnergyCommunityStore();
 const donutChart = ref(null);
 
-onMounted(() => {
-  const data = [10, 20, 30, 40, 50];
+const drawChart = (data) => {
+
   const width = 400;
   const height = 200;
   const radius = Math.min(width, height) / 2;
@@ -38,7 +41,30 @@ onMounted(() => {
   arcs.append("path")
       .attr("d", arc)
       .attr("fill", (d, i) => color(i));
+}
+
+const transformData = (data) => {
+  return data.map(item => ({
+    name: item.name.length > 9 ? item.name.substring(0, 9) + '...' : item.name,
+    energyUsage: item.energyUsage
+  }));
+};
+
+onMounted(() => {
+  // drawChart([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]);
+
+  drawChart([{
+    value: 0.5,
+    name: 'Energy Usage'
+  }]);
+
+
+  // const formattedData = transformData(store.communities);
+  // drawChart(formattedData);
+
 });
+
+
 </script>
 
 <style scoped>
