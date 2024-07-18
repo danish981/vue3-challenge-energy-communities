@@ -53,27 +53,27 @@
         <v-card-text>
           <v-row dense>
             <v-col cols="12" md="4" sm="6">
-              <v-text-field label="Name*" required v-model="form.name"></v-text-field>
+              <v-text-field label="Name*" placeholder="e,g Solar power" required v-model="form.name"></v-text-field>
             </v-col>
 
             <v-col cols="12" md="4" sm="6">
-              <v-text-field label="Energy Usage*" required v-model="form.energyUsage"></v-text-field>
+              <v-text-field label="Energy Usage*" placeholder="e,g 1500" required v-model="form.energyUsage"></v-text-field>
             </v-col>
 
             <v-col cols="12" md="4" sm="6">
-              <v-text-field label="Members*" required v-model="form.members"></v-text-field>
+              <v-text-field label="Members*" placeholder="200" required v-model="form.members"></v-text-field>
             </v-col>
 
             <v-col cols="12" md="4" sm="6">
-              <v-text-field label="Location*" required v-model="form.location"></v-text-field>
+              <v-text-field label="Location*" placeholder="e,g London" required v-model="form.location"></v-text-field>
             </v-col>
 
             <v-col cols="12" md="4" sm="6">
-              <v-text-field label="Energy Type*" required v-model="form.energyType"></v-text-field>
+              <v-text-field label="Energy Type*" placeholder="e,g Solar" required v-model="form.energyType"></v-text-field>
             </v-col>
 
             <v-col cols="12" md="4" sm="6">
-              <v-text-field label="Start Date*" required v-model="form.startDate"></v-text-field>
+              <v-text-field label="Start Date*" placeholder="e,g 2020-01-01" required v-model="form.startDate"></v-text-field>
             </v-col>
           </v-row>
 
