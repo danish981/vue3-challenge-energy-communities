@@ -1,9 +1,6 @@
 <template>
   <div class="middle-centered">
-
-
     <v-card title="Energy Communities" flat>
-
       <template v-slot:text>
         <v-text-field
             v-model="search"
@@ -15,7 +12,6 @@
         ></v-text-field>
       </template>
 
-
       <v-data-table
           density="compact"
           :headers="headers"
@@ -25,14 +21,11 @@
           :search="search"
           items-per-page="10"
       >
-
         <template v-slot:top class="text-center">
           <v-btn color="primary rounded w-25" variant="elevated" @click="openAddForm">Add Community</v-btn>
         </template>
 
-
         <template v-slot:item.actions="{ item }">
-
           <v-btn
               variant="elevated"
               @click="openEditForm(item)"
@@ -45,7 +38,6 @@
             <v-icon color="white">mdi-pencil</v-icon>
           </v-btn>
 
-
           <v-btn
               variant="elevated"
               @click="deleteCommunity(item.id)"
@@ -57,15 +49,9 @@
           >
             <v-icon color="white">mdi-bucket</v-icon>
           </v-btn>
-
-
         </template>
-
-
       </v-data-table>
-
     </v-card>
-
 
     <v-dialog v-model="addoreditCommunityForm" max-width="600">
       <template v-slot:activator="{ on }"></template>
@@ -74,35 +60,35 @@
         <v-card-text>
           <v-row dense>
             <v-col cols="12" md="4" sm="6">
-              <v-text-field label="Name*" placeholder="e,g Solar power" required v-model="form.name"></v-text-field>
+              <v-text-field label="Name*" placeholder="e.g., Solar power" required v-model="form.name"></v-text-field>
             </v-col>
 
             <v-col cols="12" md="4" sm="6">
-              <v-text-field label="Energy Usage*" placeholder="e,g 1500" required
+              <v-text-field label="Energy Usage*" placeholder="e.g., 1500" required
                             v-model="form.energyUsage"></v-text-field>
             </v-col>
 
             <v-col cols="12" md="4" sm="6">
-              <v-text-field label="Members*" placeholder="200" required v-model="form.members"></v-text-field>
+              <v-text-field label="Members*" placeholder="e.g., 200" required v-model="form.members"></v-text-field>
             </v-col>
 
             <v-col cols="12" md="4" sm="6">
-              <v-text-field label="Location*" placeholder="e,g London" required v-model="form.location"></v-text-field>
+              <v-text-field label="Location*" placeholder="e.g., London" required
+                            v-model="form.location"></v-text-field>
             </v-col>
 
             <v-col cols="12" md="4" sm="6">
-              <v-text-field label="Energy Type*" placeholder="e,g Solar" required
+              <v-text-field label="Energy Type*" placeholder="e.g., Solar" required
                             v-model="form.energyType"></v-text-field>
             </v-col>
 
             <v-col cols="12" md="4" sm="6">
-              <v-text-field label="Start Date*" placeholder="e,g 2020-01-01" required
+              <v-text-field label="Start Date*" placeholder="e.g., 2020-01-01" required
                             v-model="form.startDate"></v-text-field>
             </v-col>
           </v-row>
 
           <small class="text-caption text-medium-emphasis">*indicates required field</small>
-
         </v-card-text>
 
         <v-divider></v-divider>
@@ -113,7 +99,6 @@
                  @click="addoreditCommunityForm = false"></v-btn>
           <v-btn color="primary rounded" variant="elevated" text="Save" @click="saveForm"></v-btn>
         </v-card-actions>
-
       </v-card>
     </v-dialog>
   </div>
@@ -122,7 +107,7 @@
 <script setup>
 import {computed, onMounted, ref} from 'vue';
 import {useEnergyCommunityStore} from '@/stores/energyCommunityStore';
-import {useToast} from "vue-toastification";
+import {useToast} from 'vue-toastification';
 
 const toast = useToast();
 
@@ -178,7 +163,6 @@ const openEditForm = (item) => {
 };
 
 const saveForm = async () => {
-
   if (!form.value.name || !form.value.energyUsage || !form.value.members || !form.value.location || !form.value.energyType || !form.value.startDate) {
     toast.error('Please fill in all required fields');
     return;

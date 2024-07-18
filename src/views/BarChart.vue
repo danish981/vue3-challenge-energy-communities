@@ -1,10 +1,6 @@
 <template>
   <div>
     <Charts></Charts>
-
-
-
-
   </div>
 </template>
 

@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router';
 import Home from '../views/Home.vue';
-import ChartsView from "@/views/ChartsView.vue";
+import BarChart from "@/views/BarChart.vue";
+import DonutChart from "@/views/DonutChart.vue";
 
 const routes = [
     {
@@ -8,9 +9,13 @@ const routes = [
         name: 'Home',
         component: Home
     }, {
-        path: '/charts',
-        name: 'Charts',
-        component: ChartsView
+        path: '/bar-chart',
+        name: 'Bar Chart',
+        component: BarChart
+    }, {
+        path: '/donout-chart',
+        name: 'Donut Chart',
+        component: DonutChart
     }
 ];
 

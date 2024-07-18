@@ -22,13 +22,22 @@
             </v-list-item>
           </router-link>
 
-          <router-link to="/charts">
+          <router-link to="/bar-chart">
             <v-list-item prepend-icon="mdi-chart-bar"
                          class="nav-icon-dark-gray"
-                         title="Charts"
-                         value="Charts">
+                         title="Bar chart"
+                         value="Bar chart">
             </v-list-item>
           </router-link>
+
+          <router-link to="/donut-chart">
+            <v-list-item prepend-icon="mdi-chart-bar"
+                         class="nav-icon-dark-gray"
+                         title="Donut chart"
+                         value="Donut chart">
+            </v-list-item>
+          </router-link>
+
 
         </v-list>
 
