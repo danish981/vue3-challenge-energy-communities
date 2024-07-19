@@ -5,9 +5,9 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from 'vue';
-import * as d3 from 'd3';
-import { useEnergyCommunityStore } from '@/stores/energyCommunityStore';
+import { onMounted, ref, watch } from "vue";
+import * as d3 from "d3";
+import { useEnergyCommunityStore } from "@/stores/energyCommunityStore";
 import Centered from "@/components/Centered.vue";
 
 const store = useEnergyCommunityStore();
@@ -82,15 +82,13 @@ const drawChart = (data) => {
 };
 
 onMounted(() => {
-  const formattedData = store.getTransformedData;
-  drawChart(formattedData);
+  drawChart(store.getTransformedData);
 });
 
 watch(
   () => store.communities,
   () => {
-    const formattedData = store.getTransformedData;
-    drawChart(formattedData);
+    drawChart(store.getTransformedData);
   },
   { deep: true }
 );
