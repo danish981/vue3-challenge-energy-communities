@@ -21,10 +21,43 @@
         :search="search"
         items-per-page="15"
       >
+        <!-- the table headers were the plain text we've just made them bold -->
+        <template v-slot:header.id>
+          <div class="font-weight-bold">ID</div>
+        </template>
+
+        <template v-slot:header.name>
+          <div class="font-weight-bold">Name</div>
+        </template>
+
+        <template v-slot:header.energyUsage>
+          <div class="font-weight-bold">Energy Usage</div>
+        </template>
+
+        <template v-slot:header.members>
+          <div class="font-weight-bold">Members</div>
+        </template>
+
+        <template v-slot:header.location>
+          <div class="font-weight-bold">Location</div>
+        </template>
+
+        <template v-slot:header.energyType>
+          <div class="font-weight-bold">Type</div>
+        </template>
+
+        <template v-slot:header.startDate>
+          <div class="font-weight-bold">Start date</div>
+        </template>
+
+        <template v-slot:header.actions>
+          <div class="font-weight-bold">Actions</div>
+        </template>
+
         <template v-slot:item.energyUsage="{ item }">
           <!-- {{ item.energyUsage.toFixed(2) }} kWh -->
           <div
-            class="text-center pa-0 rounded-t-sm rounded-b-sm elevation-1"
+            class="text-center pa-0 rounded-t-sm rounded-b-sm elevation-0"
             :class="
               item.energyUsage > 1000
                 ? 'bg-red-lighten-1'
@@ -171,14 +204,14 @@ const toast = useToast();
 const store = useEnergyCommunityStore();
 
 const headers = [
-  { title: 'id', key : 'id', align: 'start' },
-  { title: 'Name', key : 'name', align: 'start' },
-  { title: 'Usage', key : 'energyUsage', align: 'start' },
-  { title: 'Members', key : 'members', align: 'start' },
-  { title: 'Location', key : 'location', align: 'start' },
-  { title: 'Type', key : 'energyType', align: 'start' },
-  { title: 'Date', key : 'startDate', align: 'start' },
-  { title: 'Actions', key : 'actions', align: 'center', sortable: false },
+  { title: "ID", key: "id", align: "start" },
+  { title: "Name", key: "name", align: "start" },
+  { title: "Usage", key: "energyUsage", align: "start" },
+  { title: "Members", key: "members", align: "start" },
+  { title: "Location", key: "location", align: "start" },
+  { title: "Type", key: "energyType", align: "start" },
+  { title: "Date", key: "startDate", align: "start" },
+  { title: "Actions", key: "actions", align: "center", sortable: false },
 ];
 
 const addoreditCommunityForm = ref(false);
