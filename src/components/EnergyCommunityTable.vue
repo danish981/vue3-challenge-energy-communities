@@ -171,14 +171,14 @@ const toast = useToast();
 const store = useEnergyCommunityStore();
 
 const headers = [
-  { text: "Id", value: "id", align: "start" },
-  { text: "Name", value: "name", align: "start" },
-  { text: "Usage", value: "energyUsage", align: "start" },
-  { text: "Members", value: "members", align: "start" },
-  { text: "Location", value: "location", align: "start" },
-  { text: "Type", value: "energyType", align: "start" },
-  { text: "Date", value: "startDate", align: "start" },
-  { text: "Actions", value: "actions", align: "center", sortable: false },
+  { title: 'id', key : 'id', align: 'start' },
+  { title: 'Name', key : 'name', align: 'start' },
+  { title: 'Usage', key : 'energyUsage', align: 'start' },
+  { title: 'Members', key : 'members', align: 'start' },
+  { title: 'Location', key : 'location', align: 'start' },
+  { title: 'Type', key : 'energyType', align: 'start' },
+  { title: 'Date', key : 'startDate', align: 'start' },
+  { title: 'Actions', key : 'actions', align: 'center', sortable: false },
 ];
 
 const addoreditCommunityForm = ref(false);
@@ -300,7 +300,7 @@ const selectedCommunities = computed(() => store.selectedCommunities);
 .middle-centered {
   margin: 0 auto;
   text-align: center;
-  width: 70%;
+  width: 80%;
   padding: 10px;
 }
 </style>
