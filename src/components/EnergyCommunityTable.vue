@@ -60,12 +60,12 @@
 
     <v-dialog v-model="addoreditCommunityForm" max-width="600">
       <v-card
-        prepend-icon="mdi-account"
-        :title="isEditMode ? 'Edit Community' : 'Add Community'"
+        prepend-icon="mdi-fire"
+        :title="isEditMode ? 'Edit Energy Community' : 'Add Energy Community'"
       >
         <v-card-text>
           <v-row dense>
-            <v-col cols="12" md="4" sm="6">
+            <v-col cols="12" md="6" sm="12">
               <v-text-field
                 label="Name*"
                 placeholder="e.g., Solar power"
@@ -74,7 +74,7 @@
               ></v-text-field>
             </v-col>
 
-            <v-col cols="12" md="4" sm="6">
+            <v-col cols="12" md="6" sm="12">
               <v-text-field
                 label="Energy Usage*"
                 placeholder="e.g., 1500"
@@ -83,7 +83,7 @@
               ></v-text-field>
             </v-col>
 
-            <v-col cols="12" md="4" sm="6">
+            <v-col cols="12" md="6" sm="12">
               <v-text-field
                 label="Members*"
                 placeholder="e.g., 200"
@@ -92,7 +92,7 @@
               ></v-text-field>
             </v-col>
 
-            <v-col cols="12" md="4" sm="6">
+            <v-col cols="12" md="6" sm="12">
               <v-text-field
                 label="Location*"
                 placeholder="e.g., London"
@@ -101,7 +101,7 @@
               ></v-text-field>
             </v-col>
 
-            <v-col cols="12" md="4" sm="6">
+            <v-col cols="12" md="6" sm="12">
               <v-text-field
                 label="Energy Type*"
                 placeholder="e.g., Solar"
@@ -110,7 +110,7 @@
               ></v-text-field>
             </v-col>
 
-            <v-col cols="12" md="4" sm="6">
+            <v-col cols="12" md="6" sm="12">
               <v-text-field
                 label="Start Date*"
                 placeholder="e.g., 2020-01-01"
