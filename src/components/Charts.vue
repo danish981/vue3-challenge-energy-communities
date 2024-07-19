@@ -13,6 +13,7 @@ import Centered from "@/components/Centered.vue";
 const store = useEnergyCommunityStore();
 const barChart = ref(null);
 
+// todo : move this method to the store
 const transformData = (data) => {
   return data.map((item) => ({
     name: item.name.length > 9 ? item.name.substring(0, 9) + "..." : item.name,

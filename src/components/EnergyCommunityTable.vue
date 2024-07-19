@@ -21,8 +21,11 @@
         :search="search"
         items-per-page="10"
       >
-        <template v-slot:top class="text-center">
-          <v-btn color="primary rounded w-25" variant="elevated" @click="openAddForm"
+        <template v-slot:top>
+          <v-btn
+            color="primary rounded w-25"
+            variant="elevated"
+            @click="openAddForm"
             >Add Community</v-btn
           >
         </template>
@@ -56,8 +59,6 @@
     </v-card>
 
     <v-dialog v-model="addoreditCommunityForm" max-width="600">
-      <template v-slot:activator="{ on }"></template>
-
       <v-card
         prepend-icon="mdi-account"
         :title="isEditMode ? 'Edit Community' : 'Add Community'"
@@ -204,7 +205,12 @@ const openEditForm = (item) => {
   addoreditCommunityForm.value = true;
 };
 
-const saveForm = async () => {
+const validateForm = () => {
+  const nameLocationEnergyTypePattern = /^[a-zA-Z\s]+$/;
+  const energyUsagePattern = /^\d+(\.\d+)?$/;
+  const membersPattern = /^[1-9]\d*$/;
+  const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+
   if (
     !form.value.name ||
     !form.value.energyUsage ||
@@ -214,6 +220,47 @@ const saveForm = async () => {
     !form.value.startDate
   ) {
     toast.error("Please fill in all required fields");
+    return false;
+  }
+
+  if (!nameLocationEnergyTypePattern.test(form.value.name)) {
+    toast.error("Name should contain only letters and spaces");
+    return false;
+  }
+
+  if (!energyUsagePattern.test(form.value.energyUsage)) {
+    toast.error("Energy Usage should be a float or integer");
+    return false;
+  }
+
+  if (!membersPattern.test(form.value.members)) {
+    toast.error("Members should be a positive integer");
+    return false;
+  }
+
+  if (!nameLocationEnergyTypePattern.test(form.value.location)) {
+    toast.error("Location should contain only letters and spaces");
+    return false;
+  }
+
+  if (!nameLocationEnergyTypePattern.test(form.value.energyType)) {
+    toast.error("Energy Type should contain only letters and spaces");
+    return false;
+  }
+
+  if (
+    !datePattern.test(form.value.startDate) ||
+    isNaN(new Date(form.value.startDate).getTime())
+  ) {
+    toast.error("Start Date should be a valid date in YYYY-MM-DD format");
+    return false;
+  }
+
+  return true;
+};
+
+const saveForm = async () => {
+  if (!validateForm()) {
     return;
   }
 
