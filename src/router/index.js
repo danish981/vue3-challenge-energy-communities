@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import BarChart from "@/views/BarChart.vue";
 import DonutChart from "@/views/DonutChart.vue";
