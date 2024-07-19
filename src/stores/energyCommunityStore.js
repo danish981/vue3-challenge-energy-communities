@@ -20,7 +20,13 @@ export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
             return state.communities.filter(community =>
                 state.selectedCommunityNames.includes(community.name)
             );
-        }
+        },
+        getTransformedData: (state) => {
+            return state.communities.map((item) => ({
+              name: item.name.length > 9 ? item.name.substring(0, 9) + '...' : item.name,
+              energyUsage: item.energyUsage,
+            }));
+          },
     },
 
     actions: {

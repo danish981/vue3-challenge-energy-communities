@@ -5,21 +5,13 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
-import * as d3 from "d3";
-import { useEnergyCommunityStore } from "@/stores/energyCommunityStore";
+import { onMounted, ref, watch } from 'vue';
+import * as d3 from 'd3';
+import { useEnergyCommunityStore } from '@/stores/energyCommunityStore';
 import Centered from "@/components/Centered.vue";
 
 const store = useEnergyCommunityStore();
 const barChart = ref(null);
-
-// todo : move this method to the store
-const transformData = (data) => {
-  return data.map((item) => ({
-    name: item.name.length > 9 ? item.name.substring(0, 9) + "..." : item.name,
-    energyUsage: item.energyUsage,
-  }));
-};
 
 const drawChart = (data) => {
   // Declare the chart dimensions and margins.
@@ -90,9 +82,18 @@ const drawChart = (data) => {
 };
 
 onMounted(() => {
-  const formattedData = transformData(store.communities);
+  const formattedData = store.getTransformedData;
   drawChart(formattedData);
 });
+
+watch(
+  () => store.communities,
+  () => {
+    const formattedData = store.getTransformedData;
+    drawChart(formattedData);
+  },
+  { deep: true }
+);
 </script>
 
 <style scoped>

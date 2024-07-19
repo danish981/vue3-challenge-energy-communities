@@ -19,8 +19,22 @@
         :items="selectedCommunities ?? store.communities"
         item-key="name"
         :search="search"
-        items-per-page="10"
+        items-per-page="15"
       >
+        <template v-slot:item.energyUsage="{ item }">
+          <!-- {{ item.energyUsage.toFixed(2) }} kWh -->
+          <div
+            class="text-center pa-0 rounded-t-sm rounded-b-sm elevation-1"
+            :class="
+              item.energyUsage > 1000
+                ? 'bg-red-lighten-1'
+                : 'bg-blue-grey-lighten-5'
+            "
+          >
+            {{ item.energyUsage.toFixed(2) }}
+          </div>
+        </template>
+
         <template v-slot:top>
           <v-btn
             color="primary rounded w-25"
