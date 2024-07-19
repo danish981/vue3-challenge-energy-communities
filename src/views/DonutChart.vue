@@ -1,8 +1,15 @@
 <template>
-  <div ref="donutChart" class="chart"></div>
+
+  <Centered>
+    <div ref="donutChart" class="chart"></div>
+    <h4 class="text-center">This chart shows the energy usage of each community</h4>
+  </Centered>
+
+
 </template>
 
 <script setup>
+import Centered from './../components/Centered.vue'
 import { onMounted, ref, watch } from "vue";
 import * as d3 from "d3";
 import { useEnergyCommunityStore } from "@/stores/energyCommunityStore";
@@ -11,7 +18,7 @@ const store = useEnergyCommunityStore();
 const donutChart = ref(null);
 
 const drawChart = (data) => {
-  const width = 900;
+  const width = 980;
   const height = Math.min(width, 500);
   const radius = Math.min(width, height) / 2;
 
