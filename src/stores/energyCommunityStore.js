@@ -6,7 +6,7 @@ export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
     state: () => ({
         communities: [],
         selectedCommunityNames: [],
-        showLoader: false,
+        showLoader: true,
         error: null,
         addOrEditCommunityForm: false,
         isAdding: false
@@ -22,6 +22,9 @@ export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
             );
         },
         getTransformedData: (state) => {
+
+            // todo : change the transformation from name to EnergyType and group the data by EnergyType and group EnergyUsage 
+
             return state.communities.map((item) => ({
                 name: item.name.length > 9 ? item.name.substring(0, 9) + '...' : item.name,
                 energyUsage: item.energyUsage,
