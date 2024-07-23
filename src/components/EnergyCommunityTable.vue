@@ -12,6 +12,8 @@
         ></v-text-field>
       </template>
 
+
+      <!-- datatable and its headings -->
       <v-data-table
         density="compact"
         :headers="headers"
@@ -103,8 +105,12 @@
           </v-btn>
         </template>
       </v-data-table>
+      <!-- datatable and table headings : ends here -->
+
     </v-card>
 
+
+    <!-- add or edit energy community Modal (dialog box) -->
     <v-dialog v-model="addoreditCommunityForm" max-width="600">
       <v-card
         prepend-icon="mdi-fire"
@@ -148,6 +154,8 @@
               ></v-text-field>
             </v-col>
 
+
+            <!-- todo : change the text to v-select options -->
             <v-col cols="12" md="6" sm="12">
 
               <!--  <v-select-->
@@ -175,12 +183,14 @@
                 v-model="form.startDate"
               ></v-text-field>
             </v-col>
+
           </v-row>
 
         </v-card-text>
 
         <v-divider></v-divider>
 
+        <!-- close and save buttons -->
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
@@ -198,8 +208,13 @@
             @click="saveForm"
           ></v-btn>
         </v-card-actions>
+        <!-- close and save buttons : ends here -->
+
       </v-card>
     </v-dialog>
+    <!-- add or edit energy community Modal (dialog box) : ends here -->
+
+
   </div>
 </template>
 
@@ -262,7 +277,7 @@ const openEditForm = (item) => {
 };
 
 const validateForm = () => {
-  const nameLocationEnergyTypePattern = /^[a-zA-Z\s]+$/;
+  const nameLocationEnergyTypePattern = /^[a-zA-Z,\s]+$/;
   const energyUsagePattern = /^\d+(\.\d+)?$/;
   const membersPattern = /^[1-9]\d*$/;
   const datePattern = /^\d{4}-\d{2}-\d{2}$/;
