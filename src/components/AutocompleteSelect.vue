@@ -33,6 +33,7 @@ onMounted(async () => {
 
 watch(selectedNames, (newSelectedNames) => {
   store.selectedCommunityNames = newSelectedNames;
+  names.value = store.communities.map((community) => community.name);
 });
 </script>
 

@@ -1,4 +1,6 @@
 <template>
+
+  <!-- todo : laoder is not working properly -->
   <centered>
     <v-skeleton-loader
       v-if="store.showLoader"
