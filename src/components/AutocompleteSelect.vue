@@ -25,8 +25,10 @@ const store = useEnergyCommunityStore();
 const names = ref([]);
 const selectedNames = ref([]);
 
+
 onMounted(async () => {
   await store.getCommunities();
+  store.showLoader = false;
   names.value = store.communities.map((community) => community.name);
 });
 

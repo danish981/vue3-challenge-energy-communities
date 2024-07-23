@@ -6,7 +6,7 @@ export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
     state: () => ({
         communities: [],
         selectedCommunityNames: [],
-        loading: false,
+        showLoader: false,
         error: null,
         addOrEditCommunityForm: false,
         isAdding: false
@@ -23,10 +23,10 @@ export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
         },
         getTransformedData: (state) => {
             return state.communities.map((item) => ({
-              name: item.name.length > 9 ? item.name.substring(0, 9) + '...' : item.name,
-              energyUsage: item.energyUsage,
+                name: item.name.length > 9 ? item.name.substring(0, 9) + '...' : item.name,
+                energyUsage: item.energyUsage,
             }));
-          },
+        },
     },
 
     actions: {
