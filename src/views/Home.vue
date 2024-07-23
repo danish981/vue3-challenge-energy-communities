@@ -23,3 +23,6 @@ import Centered from "@/components/Centered.vue";
 const store = useEnergyCommunityStore();
 </script>
 
+
+
+
