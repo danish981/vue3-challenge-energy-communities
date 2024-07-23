@@ -17,10 +17,8 @@
 <script setup>
 import AutocompleteSelect from "@/components/AutocompleteSelect.vue";
 import EnergyCommunityTable from "@/components/EnergyCommunityTable.vue";
-
 import { useEnergyCommunityStore } from "@/stores/energyCommunityStore";
+
 const store = useEnergyCommunityStore();
-
-
 </script>
 

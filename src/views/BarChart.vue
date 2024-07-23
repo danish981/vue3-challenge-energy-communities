@@ -1,10 +1,10 @@
 <template>
 
-  <Centered>
+
+  <centered>
     <div ref="barChart" class="chart"></div>
     <h4 class="text-center">This chart shows the energy usage of each community</h4>
-  </Centered>
-
+  </centered>
 
 </template>
 
@@ -87,13 +87,17 @@ const drawChart = (data) => {
 };
 
 onMounted(() => {
-  drawChart(store.getTransformedData);
+  if (!store.showLoader) {
+    drawChart(store.getTransformedData);
+  }
 });
 
 watch(
     () => store.communities,
     () => {
-      drawChart(store.getTransformedData);
+      if (!store.showLoader) {
+        drawChart(store.getTransformedData);
+      }
     },
     {deep: true}
 );

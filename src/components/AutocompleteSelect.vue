@@ -1,5 +1,5 @@
 <template>
-  <Centered>
+  <centered>
     <v-autocomplete
       density="default"
       v-model="selectedNames"
@@ -13,12 +13,12 @@
       multiple
       variant="solo-filled"
     />
-  </Centered>
+  </centered>
 </template>
 
 <script setup>
-import { useEnergyCommunityStore } from "@/stores/energyCommunityStore";
-import { onMounted, ref, watch } from "vue";
+import {useEnergyCommunityStore} from "@/stores/energyCommunityStore";
+import {onMounted, ref, watch} from "vue";
 import Centered from "@/components/Centered.vue";
 
 const store = useEnergyCommunityStore();

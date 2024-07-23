@@ -1,9 +1,9 @@
 <template>
 
-  <Centered>
+  <centered>
     <div ref="donutChart" class="chart"></div>
     <h4 class="text-center">This chart shows the energy usage of each community</h4>
-  </Centered>
+  </centered>
 
 
 </template>

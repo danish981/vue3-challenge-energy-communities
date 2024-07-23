@@ -19,7 +19,7 @@
         :items="selectedCommunities ?? store.communities"
         item-key="name"
         :search="search"
-        items-per-page="15"
+        items-per-page="10"
       >
         <!-- the table headers were the plain text we've just made them bold -->
         <template v-slot:header.id>
@@ -77,7 +77,7 @@
           >
         </template>
 
-        <template v-slot:item.actions="{ item }">
+        <template #item.actions="{ item }">
           <v-btn
             variant="elevated"
             @click="openEditForm(item)"
@@ -114,7 +114,7 @@
           <v-row dense>
             <v-col cols="12" md="6" sm="12">
               <v-text-field
-                label="Name*"
+                label="Name"
                 placeholder="e.g., Solar power"
                 required
                 v-model="form.name"
@@ -123,7 +123,7 @@
 
             <v-col cols="12" md="6" sm="12">
               <v-text-field
-                label="Energy Usage*"
+                label="Energy Usage"
                 placeholder="e.g., 1500"
                 required
                 v-model="form.energyUsage"
@@ -132,7 +132,7 @@
 
             <v-col cols="12" md="6" sm="12">
               <v-text-field
-                label="Members*"
+                label="Members"
                 placeholder="e.g., 200"
                 required
                 v-model="form.members"
@@ -141,7 +141,7 @@
 
             <v-col cols="12" md="6" sm="12">
               <v-text-field
-                label="Location*"
+                label="Location"
                 placeholder="e.g., London"
                 required
                 v-model="form.location"
@@ -149,27 +149,35 @@
             </v-col>
 
             <v-col cols="12" md="6" sm="12">
-              <v-text-field
-                label="Energy Type*"
-                placeholder="e.g., Solar"
-                required
-                v-model="form.energyType"
-              ></v-text-field>
+
+              <v-select
+                  label="Energy Type"
+                  required
+                  :items="['Solar', 'Wind', 'Hydropower', 'Geothermal', 'Biomass', 'Tidal', 'Mixed' ]"
+                  v-model="form.energyType"
+              ></v-select>
+
+            <!--  <v-text-field-->
+            <!--    label="Energy Type"-->
+            <!--    placeholder="e.g., Solar"-->
+            <!--    required-->
+            <!--    v-model="form.energyType"-->
+            <!--  ></v-text-field>-->
+
+
             </v-col>
 
             <v-col cols="12" md="6" sm="12">
               <v-text-field
-                label="Start Date*"
+                label="Start Date"
                 placeholder="e.g., 2020-01-01"
                 required
                 v-model="form.startDate"
               ></v-text-field>
             </v-col>
           </v-row>
-
-          <small class="text-caption text-medium-emphasis"
-            >*indicates required field</small
-          >
+          
+          
         </v-card-text>
 
         <v-divider></v-divider>
@@ -177,12 +185,14 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
+            class="font-weight-bold px-3"
             color="secondary rounded"
             variant="elevated"
             text="Close"
             @click="addoreditCommunityForm = false"
           ></v-btn>
           <v-btn
+            class="font-weight-bold px-3"
             color="primary rounded"
             variant="elevated"
             :text="isEditMode ? 'Update' : 'Save'"
