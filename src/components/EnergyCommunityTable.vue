@@ -185,7 +185,7 @@
           <v-btn
             color="primary rounded"
             variant="elevated"
-            text="Save"
+            :text="isEditMode ? 'Update' : 'Save'"
             @click="saveForm"
           ></v-btn>
         </v-card-actions>
