@@ -150,20 +150,20 @@
 
             <v-col cols="12" md="6" sm="12">
 
-              <v-select
-                  label="Energy Type"
-                  required
-                  :items="['Solar', 'Wind', 'Hydropower', 'Geothermal', 'Biomass', 'Tidal', 'Mixed' ]"
-                  v-model="form.energyType"
-              ></v-select>
+              <!--  <v-select-->
+              <!--      label="Energy Type"-->
+              <!--      placeholder="e.g., Solar"-->
+              <!--      required-->
+              <!--      :items="['Solar', 'Wind', 'Hydropower', 'Geothermal', 'Biomass', 'Tidal', 'Mixed' ]"-->
+              <!--      v-model="form.energyType"-->
+              <!--  ></v-select>-->
 
-            <!--  <v-text-field-->
-            <!--    label="Energy Type"-->
-            <!--    placeholder="e.g., Solar"-->
-            <!--    required-->
-            <!--    v-model="form.energyType"-->
-            <!--  ></v-text-field>-->
-
+              <v-text-field
+                label="Energy Type"
+                placeholder="e.g., Solar"
+                required
+                v-model="form.energyType"
+              ></v-text-field>
 
             </v-col>
 
@@ -176,8 +176,7 @@
               ></v-text-field>
             </v-col>
           </v-row>
-          
-          
+
         </v-card-text>
 
         <v-divider></v-divider>

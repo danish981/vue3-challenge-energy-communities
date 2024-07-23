@@ -22,13 +22,16 @@ export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
             );
         },
         getTransformedData: (state) => {
+            const groupedData = state.communities.reduce((acc, item) => {
+                const energyType = item.energyType;
+                if (!acc[energyType]) {
+                    acc[energyType] = { name: energyType, value: 0 };
+                }
+                acc[energyType].value += item.energyUsage;
+                return acc;
+            }, {});
 
-            // todo : change the transformation from name to EnergyType and group the data by EnergyType and group EnergyUsage 
-
-            return state.communities.map((item) => ({
-                name: item.name.length > 9 ? item.name.substring(0, 9) + '...' : item.name,
-                energyUsage: item.energyUsage,
-            }));
+            return Object.values(groupedData);
         },
     },
 
