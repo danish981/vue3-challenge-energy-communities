@@ -76,19 +76,25 @@ const drawChart = (data) => {
   return svg.node();
 };
 
-onMounted(() => {
-  const formattedData = store.getTransformedData;
-  drawChart(formattedData);
+
+const updateChart = () => {
+  const transformedData = store.getTransformedData;
+  drawChart(transformedData);
+};
+
+onMounted(async () => {
+  await store.getCommunities();
+  updateChart();
 });
 
 watch(
     () => store.communities,
     () => {
-      const formattedData = store.getTransformedData;
-      drawChart(formattedData);
+      updateChart();
     },
     { deep: true }
 );
+
 </script>
 
 <style scoped>

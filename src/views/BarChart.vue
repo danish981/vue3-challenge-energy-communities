@@ -1,7 +1,7 @@
 <template>
   <Centered>
     <div ref="barChart" class="chart"></div>
-    <h4 class="text-center">This chart shows the energy usage of energy type</h4>
+    <h4 class="text-center">This chart shows the energy usage of each energy type</h4>
   </Centered>
 </template>
 
@@ -15,7 +15,6 @@ const store = useEnergyCommunityStore();
 const barChart = ref(null);
 
 const drawChart = (data) => {
-  // Declare the chart dimensions and margins.
   const width = 928;
   const height = 500;
   const marginTop = 30;
@@ -23,21 +22,18 @@ const drawChart = (data) => {
   const marginBottom = 30;
   const marginLeft = 40;
 
-  // Declare the x (horizontal position) scale.
   const x = d3
       .scaleBand()
       .domain(data.map((d) => d.name))
       .range([marginLeft, width - marginRight])
       .padding(0.1);
 
-  // Declare the y (vertical position) scale.
   const y = d3
       .scaleLinear()
       .domain([0, d3.max(data, (d) => d.value)])
       .nice()
       .range([height - marginBottom, marginTop]);
 
-  // Create the SVG container.
   const svg = d3
       .select(barChart.value)
       .html('') // Clear previous content
@@ -47,7 +43,6 @@ const drawChart = (data) => {
       .attr('viewBox', [0, 0, width, height])
       .attr('style', 'max-width: 100%; height: auto;');
 
-  // Add a rect for each bar.
   svg
       .append('g')
       .attr('fill', 'steelblue')
@@ -59,13 +54,11 @@ const drawChart = (data) => {
       .attr('height', (d) => y(0) - y(d.value))
       .attr('width', x.bandwidth());
 
-  // Add the x-axis and label.
   svg
       .append('g')
       .attr('transform', `translate(0,${height - marginBottom})`)
       .call(d3.axisBottom(x).tickSizeOuter(0));
 
-  // Add the y-axis and label, and remove the domain line.
   svg
       .append('g')
       .attr('transform', `translate(${marginLeft},0)`)
@@ -82,17 +75,22 @@ const drawChart = (data) => {
       );
 };
 
-onMounted(() => {
-  const transFormedData = store.getTransformedData;
-  drawChart(transFormedData);
+const updateChart = () => {
+  const transformedData = store.getTransformedData;
+  drawChart(transformedData);
+};
+
+onMounted(async () => {
+  await store.getCommunities();
+  updateChart();
 });
 
 watch(
     () => store.communities,
     () => {
-      drawChart(store.getTransformedData);
+      updateChart();
     },
-    {deep: true}
+    { deep: true }
 );
 </script>
 

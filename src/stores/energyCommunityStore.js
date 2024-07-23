@@ -2,14 +2,13 @@ import { defineStore } from 'pinia';
 import EnergyCommunityService from '../services/EnergyCommunityService';
 
 export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
-
     state: () => ({
         communities: [],
         selectedCommunityNames: [],
         showLoader: true,
         error: null,
         addOrEditCommunityForm: false,
-        isAdding: false
+        isAdding: false,
     }),
 
     getters: {
@@ -17,11 +16,11 @@ export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
             if (state.selectedCommunityNames.length === 0) {
                 return state.communities;
             }
-            return state.communities.filter(community =>
+            return state.communities.filter((community) =>
                 state.selectedCommunityNames.includes(community.name)
             );
         },
-        getTransformedData: (state) => {
+        getTransformedData(state) {
             const groupedData = state.communities.reduce((acc, item) => {
                 const energyType = item.energyType;
                 if (!acc[energyType]) {
@@ -37,14 +36,14 @@ export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
 
     actions: {
         async getCommunities() {
-            this.loading = true;
+            this.showLoader = true;
             this.error = null;
             try {
                 this.communities = await EnergyCommunityService.fetchCommunities();
             } catch (error) {
                 this.error = error.message;
             } finally {
-                this.loading = false;
+                this.showLoader = false;
             }
         },
 
@@ -60,7 +59,7 @@ export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
         async updateCommunity(updatedCommunity) {
             try {
                 const updated = await EnergyCommunityService.updateCommunity(updatedCommunity);
-                const index = this.communities.findIndex(c => c.id === updated.id);
+                const index = this.communities.findIndex((c) => c.id === updated.id);
                 if (index !== -1) {
                     this.communities.splice(index, 1, updated);
                 }
@@ -72,10 +71,10 @@ export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
         async deleteCommunity(id) {
             try {
                 await EnergyCommunityService.deleteCommunity(id);
-                this.communities = this.communities.filter(community => community.id !== id);
+                this.communities = this.communities.filter((community) => community.id !== id);
             } catch (error) {
                 this.error = error.message;
             }
-        }
-    }
+        },
+    },
 });
