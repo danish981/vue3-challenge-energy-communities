@@ -22,7 +22,6 @@
           :search="search"
           items-per-page="10"
       >
-        <!-- the table headers were the plain text we've just made them bold -->
         <template v-slot:header.id>
           <div class="font-weight-bold">ID</div>
         </template>
@@ -56,7 +55,6 @@
         </template>
 
         <template v-slot:item.energyUsage="{ item }">
-          <!-- {{ item.energyUsage.toFixed(2) }} kWh -->
           <div
               class="text-center pa-0 rounded-t-sm rounded-b-sm elevation-0"
               :class="
@@ -104,7 +102,6 @@
         </template>
       </v-data-table>
       <!-- datatable and table headings : ends here -->
-
     </v-card>
 
     <!-- add or edit energy community Modal (dialog box) -->
@@ -129,7 +126,7 @@
                   label="Energy Usage"
                   placeholder="e.g., 1500"
                   required
-                  v-model="form.energyUsage"
+                  v-model.number="form.energyUsage"
               ></v-text-field>
             </v-col>
 
@@ -138,7 +135,7 @@
                   label="Members"
                   placeholder="e.g., 200"
                   required
-                  v-model="form.members"
+                  v-model.number="form.members"
               ></v-text-field>
             </v-col>
 
@@ -193,7 +190,6 @@
           ></v-btn>
         </v-card-actions>
         <!-- close and save buttons : ends here -->
-
       </v-card>
     </v-dialog>
     <!-- add or edit energy community Modal (dialog box) : ends here -->
@@ -201,23 +197,23 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
-import { useEnergyCommunityStore } from "@/stores/energyCommunityStore";
-import { useToast } from "vue-toastification";
+import {computed, onMounted, ref} from "vue";
+import {useEnergyCommunityStore} from "@/stores/energyCommunityStore";
+import {useToast} from "vue-toastification";
 
 const toast = useToast();
 
 const store = useEnergyCommunityStore();
 
 const headers = [
-  { title: "ID", key: "id", align: "start" },
-  { title: "Name", key: "name", align: "start" },
-  { title: "Usage", key: "energyUsage", align: "start" },
-  { title: "Members", key: "members", align: "start" },
-  { title: "Location", key: "location", align: "start" },
-  { title: "Type", key: "energyType", align: "start" },
-  { title: "Date", key: "startDate", align: "start" },
-  { title: "Actions", key: "actions", align: "center", sortable: false },
+  {title: "ID", key: "id", align: "start"},
+  {title: "Name", key: "name", align: "start"},
+  {title: "Usage", key: "energyUsage", align: "start"},
+  {title: "Members", key: "members", align: "start"},
+  {title: "Location", key: "location", align: "start"},
+  {title: "Type", key: "energyType", align: "start"},
+  {title: "Date", key: "startDate", align: "start"},
+  {title: "Actions", key: "actions", align: "center", sortable: false},
 ];
 
 const addoreditCommunityForm = ref(false);
@@ -253,7 +249,7 @@ const openAddForm = () => {
 };
 
 const openEditForm = (item) => {
-  form.value = { ...item };
+  form.value = {...item};
   isEditMode.value = true;
   addoreditCommunityForm.value = true;
 };
