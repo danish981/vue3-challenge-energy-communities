@@ -17,7 +17,7 @@
           density="compact"
           :headers="headers"
           class="elevation-1 text-left bg-amber-darken-2 bg-grey-lighten-5 border-md rounded"
-          :items="filteredCommunities"
+          :items="selectedCommunities ?? filteredCommunities"
           item-key="name"
           :search="search"
           items-per-page="10"
@@ -233,6 +233,9 @@ const form = ref({
 onMounted(async () => {
   await store.getCommunities();
 });
+
+const selectedCommunities = computed(() => store.selectedCommunities);
+
 
 const openAddForm = () => {
   form.value = {
