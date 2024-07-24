@@ -50,7 +50,7 @@ export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
         async addCommunity(newCommunity) {
             try {
                 const createdCommunity = await EnergyCommunityService.createCommunity(newCommunity);
-                this.communities.push(createdCommunity);
+                this.communities = [...this.communities, createdCommunity];
             } catch (error) {
                 this.error = error.message;
             }
@@ -59,10 +59,9 @@ export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
         async updateCommunity(updatedCommunity) {
             try {
                 const updated = await EnergyCommunityService.updateCommunity(updatedCommunity);
-                const index = this.communities.findIndex((c) => c.id === updated.id);
-                if (index !== -1) {
-                    this.communities.splice(index, 1, updated);
-                }
+                this.communities = this.communities.map((community) =>
+                    community.id === updated.id ? updated : community
+                );
             } catch (error) {
                 this.error = error.message;
             }

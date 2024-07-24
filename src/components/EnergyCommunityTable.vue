@@ -17,7 +17,7 @@
           density="compact"
           :headers="headers"
           class="elevation-1 text-left bg-amber-darken-2 bg-grey-lighten-5 border-md rounded"
-          :items="selectedCommunities ?? store.communities"
+          :items="filteredCommunities"
           item-key="name"
           :search="search"
           items-per-page="10"
@@ -74,8 +74,7 @@
               color="primary rounded w-25"
               variant="elevated"
               @click="openAddForm"
-          >Add Community</v-btn
-          >
+          >Add Community</v-btn>
         </template>
 
         <template #item.actions="{ item }">
@@ -152,25 +151,14 @@
               ></v-text-field>
             </v-col>
 
-
-            <!-- todo : change the text to v-select options -->
             <v-col cols="12" md="6" sm="12">
-
-              <!--  <v-select-->
-              <!--      label="Energy Type"-->
-              <!--      placeholder="e.g., Solar"-->
-              <!--      required-->
-              <!--      :items="['Solar', 'Wind', 'Hydropower', 'Geothermal', 'Biomass', 'Tidal', 'Mixed' ]"-->
-              <!--      v-model="form.energyType"-->
-              <!--  ></v-select>-->
-
-              <v-text-field
-                label="Energy Type"
-                placeholder="e.g., Solar"
-                required
-                v-model="form.energyType"
-              ></v-text-field>
-
+              <v-select
+                  label="Energy Type"
+                  placeholder="e.g., Solar"
+                  required
+                  :items="['Solar', 'Wind', 'Hydropower', 'Geothermal', 'Biomass', 'Tidal', 'Mixed']"
+                  v-model="form.energyType"
+              ></v-select>
             </v-col>
 
             <v-col cols="12" md="6" sm="12">
@@ -355,7 +343,14 @@ const deleteCommunity = async (id) => {
   toast.success("Community deleted successfully");
 };
 
-const selectedCommunities = computed(() => store.selectedCommunities);
+const filteredCommunities = computed(() => {
+  if (!search.value) {
+    return store.communities;
+  }
+  return store.communities.filter((community) =>
+      community.name.toLowerCase().includes(search.value.toLowerCase())
+  );
+});
 </script>
 
 <style scoped>
