@@ -3,11 +3,13 @@ import '../src/styles/style.css';
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
-import {createVuetify} from 'vuetify';
+import { createVuetify } from 'vuetify';
+
+// todo : vuetify css classes are not autocompleting in components, not anywhere
 import "vuetify/styles";
 import '@mdi/font/css/materialdesignicons.css'
-import {createApp} from 'vue';
-import {createPinia} from 'pinia';
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 import router from './router';
 import App from './App.vue';
 

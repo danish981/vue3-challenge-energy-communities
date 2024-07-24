@@ -5,7 +5,7 @@ export const useEnergyCommunityStore = defineStore('energyCommunityStore', {
     state: () => ({
         communities: [],
         selectedCommunityNames: [],
-        showLoader: true,
+        showLoader: true,   // todo : make the loader working
         error: null,
         addOrEditCommunityForm: false,
         isAdding: false,

@@ -1,6 +1,6 @@
 <template>
 
-  <!-- todo : laoder is not working properly -->
+  <!-- todo : make the loader working properly -->
   <centered>
     <v-skeleton-loader
         v-if="store.showLoader"
@@ -14,6 +14,8 @@
     <energy-community-table></energy-community-table>
   </div>
 
+
+  <!-- todo : create a generic component to centering the div by providing a slot -->
   <v-container>
     <v-row align="center" justify="center">
       <v-col cols="auto">

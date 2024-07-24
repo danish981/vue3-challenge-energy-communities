@@ -12,6 +12,8 @@
         ></v-text-field>
       </template>
 
+
+      <!-- todo : move this datatable to a seperate component -->
       <!-- datatable and its headings -->
       <v-data-table
           density="compact"
@@ -104,6 +106,7 @@
       <!-- datatable and table headings : ends here -->
     </v-card>
 
+    <!-- todo : move this dialog box to a seperate component -->
     <!-- add or edit energy community Modal (dialog box) -->
     <v-dialog v-model="addoreditCommunityForm" max-width="600">
       <v-card
@@ -157,7 +160,7 @@
                   v-model="form.energyType"
               ></v-select>
             </v-col>
-
+            <!-- todo : convert this date field to the datepicker vuetify component -->
             <v-col cols="12" md="6" sm="12">
               <v-text-field
                   label="Start Date"
@@ -166,6 +169,7 @@
                   v-model="form.startDate"
               ></v-text-field>
             </v-col>
+
           </v-row>
         </v-card-text>
 
