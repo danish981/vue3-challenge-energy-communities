@@ -5,7 +5,6 @@
 
   <v-card>
     <v-layout>
-
       <!-- todo : move this to a seperate component , and make the text clear and without underlines-->
       <v-navigation-drawer expand-on-hover rail>
         <v-divider></v-divider>

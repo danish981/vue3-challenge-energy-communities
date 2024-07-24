@@ -3,26 +3,25 @@
     <v-card title="Energy Communities" flat>
       <template v-slot:text>
         <v-text-field
-            v-model="search"
-            label="Search"
-            prepend-inner-icon="mdi-magnify"
-            variant="outlined"
-            hide-details
-            single-line
+          v-model="search"
+          label="Search"
+          prepend-inner-icon="mdi-magnify"
+          variant="outlined"
+          hide-details
+          single-line
         ></v-text-field>
       </template>
-
 
       <!-- todo : move this datatable to a seperate component -->
       <!-- datatable and its headings -->
       <v-data-table
-          density="compact"
-          :headers="headers"
-          class="elevation-1 text-left bg-amber-darken-2 bg-grey-lighten-5 border-md rounded"
-          :items="selectedCommunities ?? filteredCommunities"
-          item-key="name"
-          :search="search"
-          items-per-page="10"
+        density="compact"
+        :headers="headers"
+        class="elevation-1 text-left bg-amber-darken-2 bg-grey-lighten-5 border-md rounded"
+        :items="selectedCommunities ?? filteredCommunities"
+        item-key="name"
+        :search="search"
+        items-per-page="10"
       >
         <template v-slot:header.id>
           <div class="font-weight-bold">ID</div>
@@ -58,8 +57,8 @@
 
         <template v-slot:item.energyUsage="{ item }">
           <div
-              class="text-center pa-0 rounded-t-sm rounded-b-sm elevation-0"
-              :class="
+            class="text-center pa-0 rounded-t-sm rounded-b-sm elevation-0"
+            :class="
               item.energyUsage > 1000
                 ? 'bg-red-lighten-1'
                 : 'bg-blue-grey-lighten-5'
@@ -71,33 +70,34 @@
 
         <template v-slot:top>
           <v-btn
-              color="primary rounded w-25"
-              variant="elevated"
-              @click="openAddForm"
-          >Add Community</v-btn>
+            color="primary rounded w-25"
+            variant="elevated"
+            @click="openAddForm"
+            >Add Community</v-btn
+          >
         </template>
 
         <template #item.actions="{ item }">
           <v-btn
-              variant="elevated"
-              @click="openEditForm(item)"
-              color="green"
-              text="edit"
-              class="mr-1 rounded"
-              size="small"
-              label
+            variant="elevated"
+            @click="openEditForm(item)"
+            color="green"
+            text="edit"
+            class="mr-1 rounded"
+            size="small"
+            label
           >
             <v-icon color="white">mdi-pencil</v-icon>
           </v-btn>
 
           <v-btn
-              variant="elevated"
-              @click="deleteCommunity(item.id)"
-              color="red"
-              text="delete"
-              class="rounded"
-              size="small"
-              label
+            variant="elevated"
+            @click="deleteCommunity(item.id)"
+            color="red"
+            text="delete"
+            class="rounded"
+            size="small"
+            label
           >
             <v-icon color="white">mdi-bucket</v-icon>
           </v-btn>
@@ -110,66 +110,73 @@
     <!-- add or edit energy community Modal (dialog box) -->
     <v-dialog v-model="addoreditCommunityForm" max-width="600">
       <v-card
-          prepend-icon="mdi-fire"
-          :title="isEditMode ? 'Edit Energy Community' : 'Add Energy Community'"
+        prepend-icon="mdi-fire"
+        :title="isEditMode ? 'Edit Energy Community' : 'Add Energy Community'"
       >
         <v-card-text>
           <v-row dense>
             <v-col cols="12" md="6" sm="12">
               <v-text-field
-                  label="Name"
-                  placeholder="e.g., Solar power"
-                  required
-                  v-model="form.name"
+                label="Name"
+                placeholder="e.g., Solar power"
+                required
+                v-model="form.name"
               ></v-text-field>
             </v-col>
 
             <v-col cols="12" md="6" sm="12">
               <v-text-field
-                  label="Energy Usage"
-                  placeholder="e.g., 1500"
-                  required
-                  v-model.number="form.energyUsage"
+                label="Energy Usage"
+                placeholder="e.g., 1500"
+                required
+                v-model.number="form.energyUsage"
               ></v-text-field>
             </v-col>
 
             <v-col cols="12" md="6" sm="12">
               <v-text-field
-                  label="Members"
-                  placeholder="e.g., 200"
-                  required
-                  v-model.number="form.members"
+                label="Members"
+                placeholder="e.g., 200"
+                required
+                v-model.number="form.members"
               ></v-text-field>
             </v-col>
 
             <v-col cols="12" md="6" sm="12">
               <v-text-field
-                  label="Location"
-                  placeholder="e.g., London"
-                  required
-                  v-model="form.location"
+                label="Location"
+                placeholder="e.g., London"
+                required
+                v-model="form.location"
               ></v-text-field>
             </v-col>
 
             <v-col cols="12" md="6" sm="12">
               <v-select
-                  label="Energy Type"
-                  placeholder="e.g., Solar"
-                  required
-                  :items="['Solar', 'Wind', 'Hydropower', 'Geothermal', 'Biomass', 'Tidal', 'Mixed']"
-                  v-model="form.energyType"
+                label="Energy Type"
+                placeholder="e.g., Solar"
+                required
+                :items="[
+                  'Solar',
+                  'Wind',
+                  'Hydropower',
+                  'Geothermal',
+                  'Biomass',
+                  'Tidal',
+                  'Mixed',
+                ]"
+                v-model="form.energyType"
               ></v-select>
             </v-col>
             <!-- todo : convert this date field to the datepicker vuetify component -->
             <v-col cols="12" md="6" sm="12">
               <v-text-field
-                  label="Start Date"
-                  placeholder="e.g., 2020-01-01"
-                  required
-                  v-model="form.startDate"
+                label="Start Date"
+                placeholder="e.g., 2020-01-01"
+                required
+                v-model="form.startDate"
               ></v-text-field>
             </v-col>
-
           </v-row>
         </v-card-text>
 
@@ -179,18 +186,18 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-              class="font-weight-bold px-3"
-              color="secondary rounded"
-              variant="elevated"
-              text="Close"
-              @click="addoreditCommunityForm = false"
+            class="font-weight-bold px-3"
+            color="secondary rounded"
+            variant="elevated"
+            text="Close"
+            @click="addoreditCommunityForm = false"
           ></v-btn>
           <v-btn
-              class="font-weight-bold px-3"
-              color="primary rounded"
-              variant="elevated"
-              :text="isEditMode ? 'Update' : 'Save'"
-              @click="saveForm"
+            class="font-weight-bold px-3"
+            color="primary rounded"
+            variant="elevated"
+            :text="isEditMode ? 'Update' : 'Save'"
+            @click="saveForm"
           ></v-btn>
         </v-card-actions>
         <!-- close and save buttons : ends here -->
@@ -201,23 +208,23 @@
 </template>
 
 <script setup>
-import {computed, onMounted, ref} from "vue";
-import {useEnergyCommunityStore} from "@/stores/energyCommunityStore";
-import {useToast} from "vue-toastification";
+import { computed, onMounted, ref } from "vue";
+import { useEnergyCommunityStore } from "@/stores/energyCommunityStore";
+import { useToast } from "vue-toastification";
 
 const toast = useToast();
 
 const store = useEnergyCommunityStore();
 
 const headers = [
-  {title: "ID", key: "id", align: "start"},
-  {title: "Name", key: "name", align: "start"},
-  {title: "Usage", key: "energyUsage", align: "start"},
-  {title: "Members", key: "members", align: "start"},
-  {title: "Location", key: "location", align: "start"},
-  {title: "Type", key: "energyType", align: "start"},
-  {title: "Date", key: "startDate", align: "start"},
-  {title: "Actions", key: "actions", align: "center", sortable: false},
+  { title: "ID", key: "id", align: "start" },
+  { title: "Name", key: "name", align: "start" },
+  { title: "Usage", key: "energyUsage", align: "start" },
+  { title: "Members", key: "members", align: "start" },
+  { title: "Location", key: "location", align: "start" },
+  { title: "Type", key: "energyType", align: "start" },
+  { title: "Date", key: "startDate", align: "start" },
+  { title: "Actions", key: "actions", align: "center", sortable: false },
 ];
 
 const addoreditCommunityForm = ref(false);
@@ -240,7 +247,6 @@ onMounted(async () => {
 
 const selectedCommunities = computed(() => store.selectedCommunities);
 
-
 const openAddForm = () => {
   form.value = {
     id: null,
@@ -256,7 +262,7 @@ const openAddForm = () => {
 };
 
 const openEditForm = (item) => {
-  form.value = {...item};
+  form.value = { ...item };
   isEditMode.value = true;
   addoreditCommunityForm.value = true;
 };
@@ -268,12 +274,12 @@ const validateForm = () => {
   const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 
   if (
-      !form.value.name ||
-      !form.value.energyUsage ||
-      !form.value.members ||
-      !form.value.location ||
-      !form.value.energyType ||
-      !form.value.startDate
+    !form.value.name ||
+    !form.value.energyUsage ||
+    !form.value.members ||
+    !form.value.location ||
+    !form.value.energyType ||
+    !form.value.startDate
   ) {
     toast.error("Please fill in all required fields");
     return false;
@@ -305,8 +311,8 @@ const validateForm = () => {
   }
 
   if (
-      !datePattern.test(form.value.startDate) ||
-      isNaN(new Date(form.value.startDate).getTime())
+    !datePattern.test(form.value.startDate) ||
+    isNaN(new Date(form.value.startDate).getTime())
   ) {
     toast.error("Start Date should be a valid date in YYYY-MM-DD format");
     return false;
@@ -321,9 +327,9 @@ const saveForm = async () => {
   }
 
   const duplicateCommunity = store.communities.find(
-      (community) =>
-          community.name.toLowerCase() === form.value.name.toLowerCase() &&
-          community.id !== form.value.id
+    (community) =>
+      community.name.toLowerCase() === form.value.name.toLowerCase() &&
+      community.id !== form.value.id
   );
 
   if (duplicateCommunity) {
@@ -351,7 +357,7 @@ const filteredCommunities = computed(() => {
     return store.communities;
   }
   return store.communities.filter((community) =>
-      community.name.toLowerCase().includes(search.value.toLowerCase())
+    community.name.toLowerCase().includes(search.value.toLowerCase())
   );
 });
 </script>
