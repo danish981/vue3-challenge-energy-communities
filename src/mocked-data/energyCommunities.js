@@ -88,5 +88,22 @@ export default [
         location: 'San Francisco, CA',
         energyType: 'Hydropower',
         startDate: '2022-08-30'
+    }, {
+        id: 11,
+        name: 'Solar Paradise',
+        energyUsage: 1200,
+        members: 200,
+        location: 'Los Angeles, CA',
+        energyType: 'Solar',
+        startDate: '2021-04-01'
+    },
+    {
+        id: 12,
+        name: 'Solar Edge',
+        energyUsage: 900,
+        members: 150,
+        location: 'San Diego, CA',
+        energyType: 'Solar',
+        startDate: '2020-12-15'
     }
 ];
