@@ -46,10 +46,7 @@
   </v-card>
 </template>
 
-
-<script setup>
-</script>
-
+<script setup></script>
 
 <style>
 .nav-icon-dark-gray {
